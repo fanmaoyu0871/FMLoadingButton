@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "FMLoadingButton.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    FMLoadingButton *loadingBtn = [[FMLoadingButton alloc]initWithFrame:CGRectMake(100, 100, 200, 70)];
+    [self.view addSubview:loadingBtn];
+    
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(300, 300, 100, 100)];
+    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+    [btn setTitle:@"btn" forState:UIControlStateNormal];
+    [self.view addSubview:btn];
+    
+    UIView *view = [[UIView alloc]initWithFrame:btn.bounds];
+    view.userInteractionEnabled = NO;
+    [btn addSubview:view];
+    
+}
+
+-(void)btnAction
+{
+    NSLog(@"hehe");
 }
 
 - (void)didReceiveMemoryWarning {
